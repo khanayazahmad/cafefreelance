@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="This is practice site only for learning purposes">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="_resources/IMG/Eagle-clipart-free-clipart-clipartix.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title style="font-family: cursive">Café Freelance</title>
+    <style>
+
+        .modal-open {
+            padding-right: 0 !important;
+        }
+        html {
+            overflow-y: scroll !important;
+        }
+
+        img {
+            max-width: 100%;
+        }
+        html, body{
+            height: 100%;
+        }
+        body{
+
+            background-size:100% 110%;
+            width:100%;
+            height:100%;
+        }
+
+        .header{
+            background-image: url("_resources/IMG/cellphone-coffee-desk-860379.jpg");
+            background-size:105% 105%;
+            width:100%;
+            height:100%;
+        }
+
+        .section_about{
+            background-image: url("_resources/IMG/black-and-white-black-and-white-chair-81363.jpg");
+            background-size:105% 105%;
+            width:100%;
+            height:100%;
+        }
+
+        .section_services{
+            background-image: url("_resources/IMG/barista-barista-girl-business-702251.jpg");
+            background-size:105% 105%;
+            width:100%;
+            height:100%;
+        }
+
+        .section_contact{
+            background-image: url("_resources/IMG/cable-call-communication-33999.jpg");
+            background-size:105% 105%;
+            width:100%;
+            height:100%;
+        }
+
+        label{
+            font-family:sans-serif;
+            font-size:14px;
+        }
+        input{
+            width:100%;
+        }
+
+        .sticky
+        {
+            position: fixed;
+            top: 0%;
+            left: 0;
+            right: 0;
+
+        }
+
+        .navbar-brand {
+            float: left;
+            height: 50px;
+            padding: 0px 15px;
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        .navbar {
+            margin-bottom: 0px;
+        }
+
+        .btn-outline-success {
+            color: #337ab7;
+            background-color: #337ab700;
+            background-image: none;
+            border-color: #337ab7;
+        }
+
+        .btn-outline-success:hover {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+
+        .btn_custom {
+            color: #337ab7;
+            background-color: #f8f9fa;
+            border-color: #f8f9fa;
+        }
+
+        .text-muted {
+            color: #cccccce0!important;
+        }
+
+        .btn-primary2 {
+            color: #fff;
+            background-color: #ac311c;
+            border-color: #750009;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#"><b style="margin-left:2%; margin-top:2%">
+        <img src="_resources/IMG/Eagle-clipart-free-clipart-clipartix.png" alt="HTML5 Icon" style="width:50px;height:50px;"><i style="font-size: 30px; font-family: Brush Script MT">Café Freelance</i></b>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger active" href="#about">About</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Services
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#services">Hire A FreeLancer</a>
+                    <a class="dropdown-item" href="#services">Become A FreeLancer</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#services">Place Product Order</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#services">Find a Team</a>
+                    <a class="dropdown-item" href="#services">Build a Team</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger active" href="#contactus">Contact Us</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" style="margin-left:50%">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+    <option_tag style="margin-left:10%">
+        <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#LoginModal">Login</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>
+    </option_tag>
+
+</nav>
+
+<header class="masthead text-center text-white d-flex header">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="text-uppercase" style="color: rgba(255,255,255,0.88)">
+                    <strong>Hang Out with our Freelancers</strong>
+                </h1>
+                <hr>
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <p class="text-faded mb-5">Start hiring Freelancers with special skills specific to your projects!
+                    Just put out the requirements and our related freelancers will get in touch!</p>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="bg-primary section_about text-center text-white d-flex" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto text-center" style="margin-top: 130px">
+                <h2 class="section-heading text-white">We've got what you need!</h2>
+                <hr class="light my-4">
+                <p class="text-faded mb-4">Freelance Cafe has everyone you need to get your new application up and running in no time! No strings attached!</p>
+                <a class="btn btn_custom btn-xl js-scroll-trigger" href="#services" >Get Started!</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="section_services text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center" style="margin-top: 50px">
+                <h2 class="section-heading">At Your Service</h2>
+                <hr class="my-4">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <img src="_resources/IMG/baseline-person_add-24px.svg"/><br>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" style="width:100%" data-toggle="modal" data-target="#SignUpModal">Hire a Freelancer</a>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box mt-5 mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24">
+                        <path fill="none" d="M0 0h24v24H0z"/>
+                        <path fill="#8A8A8A" d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14
+                         3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43
+                          15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22
+                           16.29z"/>
+                    </svg>
+                    <h3 class="mb-3">Sturdy Architects</h3>
+                    <p class="text-muted mb-0">Our Freelancers are tested regularly so they don't break.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box mt-5 mx-auto">
+                    <img src="_resources/IMG/baseline-how_to_reg-24px.svg"/>
+                    <h3 class="mb-3">Up to Date</h3>
+                    <p class="text-muted mb-0">We make sure  they are up to date with the most fresh technologies.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <img src="_resources/IMG/baseline-local_cafe-24px.svg"/><br>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" style="width:100%" data-toggle="modal" data-target="#SignUpModal">Become a Freelancer</a>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box mt-5 mx-auto">
+                    <img src="_resources/IMG/baseline-favorite-24px.svg"/>
+                    <h3 class="mb-3">Designs with Love</h3>
+                    <p class="text-muted mb-0">You have to get your applications developed with love</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box mt-5 mx-auto">
+                    <img src="_resources/IMG/baseline-send-24px.svg"/>
+                    <h3 class="mb-3">Ready to Develop</h3>
+                    <p class="text-muted mb-0">You can use them as is, or you can make them learn new tech for you!</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <img src="_resources/IMG/baseline-phone-24px.svg"/><br>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" style="width:100%" href="#contactus">Talk to Us</a>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="bg-primary section_contact text-center text-white d-flex" id="contactus">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center" style="margin-top: 70px">
+                <h2 class="section-heading" style="color:#ae3b24"><strong>We are just one call away..</strong></h2>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <br>
+                <a class="btn btn-primary2 btn-xl open-contacts" style="width:100%" data-val="1">
+                    <img src="_resources/IMG/baseline-contact_mail-24px.svg"/><br>Write to us</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <br>
+                <a class="btn btn-primary2 btn-xl open-contacts" style="width:100%" data-val="2">
+                    <img src="_resources/IMG/baseline-contact_phone-24px.svg"/><br>Call us</a>
+            </div>
+        </div>
+
+        <div class="row navbar" style="margin-top:10%; margin-left:50%">
+            <a class="navbar-brand" href="#"><b style="margin-left:2%; margin-top:2%">
+                <img src="_resources/IMG/Eagle-clipart-free-clipart-clipartix.png" alt="HTML5 Icon" style="width:50px;height:50px;">
+                <i style="font-size: 30px; font-family: Brush Script MT; color:white">Café Freelance</i></b></a>
+            <a style="color:white" href="#">Privacy</a>
+            <p style="margin-left:2%; margin-right: 2%">|</p><a style="color:white" href="#">Terms</a>
+            <p style="margin-left:2%; margin-right: 2%">|</p><a style="color:white" href="#">Sitemap</a>
+        </div>
+
+    </div>
+</section>
+
+
+<div class="modal fade in modal-open" id="LoginModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" id="loginModalHeaderDiv" style="background-color: #337ab7; color:white; width:100.2%">
+                <h4 class="modal-title" id="loginModalHeader">
+                    Login
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
+
+
+            </div>
+            <div class="modal-body" style="font-family:sans-serif; font-size:15px;">
+                <form id="loginForm"
+                      action="_controller/authenticate.php"
+                      onsubmit="return validate(document.getElementById('user').value,document.getElementById('pass').value)"
+                      method="post">
+                    Username :<input type="text" name="username" id="username" required/><br><br>
+                    Password :<input type="password" name="password" id="password" required/><br><br>
+                    <button type="submit"
+                            class="btn btn-outline-success my-2 my-sm-0" id="loginBtn">Login</button>
+                    <button type="button" class="btn btn-outline-success my-2 my-sm-0"
+                            onclick="document.getElementById('username').innerHTML = 'Enter username and password.';
+                            document.getElementById('username').style.color='black';" data-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade in modal-open" id="SignUpModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #337ab7; color:white; width:100.2%">
+
+                <h4 class="modal-title" id="registerModalHeader">Register Now!</h4>
+                <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
+            </div>
+            <div class="modal-body" style="font-family:sans-serif; font-size:15px;" id="modal-body">
+                <form name='registration' id="regForm" action="registration.php" method="post">
+                    <label for="userid">Username*:</label><br>
+                    <input type="text" name="userid" size="12" id="userid" /><br><br>
+                    <label for="passid">Password*:</label><br>
+                    <input type="password" name="passid" size="12" id="passid" /><br><br>
+                    <label for="name">Name*:</label><br>
+                    <input type="text" name="name" size="50" id="name" /><br><br>
+                    <label for="address">Address:</label><br>
+                    <input type="text" name="address" id="address"/><br><br>
+                    <label for="country">Country*:</label><br>
+                    <select name="country" id="country">
+                        <option selected="" value="Default">(Please select a country)</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Canada">Canada</option>
+                        <option value="China">China</option>
+                        <option value="India">India</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Russia">Russia</option>
+                        <option value="UK">UK</option>
+                        <option value="USA">USA</option>
+                        <option value="USA">Other</option>
+                    </select><br><br>
+                    <label for="zip">ZIP Code*:</label><br>
+                    <input type="text" name="zip" id="zip" /><br><br>
+                    <label for="email">Email*:</label><br>
+                    <input type="text" name="email" id="email"/><br><br>
+                    <label id="gender">Role*:</label><br>
+                    <input type="radio" name="role" value="Freelancer" checked/><span>Freelancer</span><br>
+                    <input type="radio" name="role" value="Contractor" /><span>Contractor</span><br><br>
+                    <label for="bio">Bio:</label><br>
+                    <textarea name="desc" id="bio" style="width:100%"></textarea><br><br>
+                    <label for="resume">Upload Resume/Business Card:</label><br>
+                    <input type="file" id="resume"/><br>
+
+                    <input type="button" name="submit" value="Submit" class="btn btn-outline-success my-2 my-sm-0" id="register"
+                           onclick="registrationValidate(document.getElementById('userid').value,document.getElementById('passid').value )" /><br>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade in modal-open" id="contacts" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #ae3b24; color:white; width:100.2%">
+
+                <h4 class="modal-title" id="contactsModalHeader">Contact Information</h4>
+                <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
+            </div>
+            <div class="modal-body" style="font-family:sans-serif; font-size:14px;" id="contacts-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $('.open-contacts').on('click', function () {
+            var valueID = $(this).data('val');
+            $('#contacts-body').load('_controller/fetch_contacts.php?id='+valueID, function () {
+                $('#contacts').modal({show: true});
+            });
+        });
+    });
+
+    $(document).ready(function() {
+
+        $("#loginBtn").click(
+            function () {
+                $.post(
+                    $("#loginForm").attr("action"), $("#loginForm").serialize(),function(data){
+                       $("#loginModalHeader").html(data);
+
+                    }
+                );
+
+                $("#loginForm").submit(function(){
+                    return false;
+                });
+
+
+            }
+        );
+    });
+
+    $(document).ready(function () {
+        $('#LoginModal').on('hidden.bs.modal', function (e) {
+            $(this).html("<div class=\"modal-dialog\">\n" +
+                "\n" +
+                "        <!-- Modal content-->\n" +
+                "        <div class=\"modal-content\">\n" +
+                "            <div class=\"modal-header\" id=\"loginModalHeaderDiv\" style=\"background-color: #337ab7; color:white; width:100.2%\">\n" +
+                "                <h4 class=\"modal-title\" id=\"loginModalHeader\">\n" +
+                "                    Login\n" +
+                "                </h4>\n" +
+                "                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" style=\"color:white\">&times;</button>\n" +
+                "\n" +
+                "\n" +
+                "            </div>\n" +
+                "            <div class=\"modal-body\" style=\"font-family:sans-serif; font-size:15px;\">\n" +
+                "                <form id=\"loginForm\"\n" +
+                "                      action=\"_controller/authenticate.php\"\n" +
+                "                      onsubmit=\"return validate(document.getElementById('user').value,document.getElementById('pass').value)\"\n" +
+                "                      method=\"post\">\n" +
+                "                    Username :<input type=\"text\" name=\"username\" id=\"username\" required/><br><br>\n" +
+                "                    Password :<input type=\"password\" name=\"password\" id=\"password\" required/><br><br>\n" +
+                "                    <button type=\"submit\"\n" +
+                "                            class=\"btn btn-outline-success my-2 my-sm-0\" id=\"loginBtn\">Login</button>\n" +
+                "                    <button type=\"button\" class=\"btn btn-outline-success my-2 my-sm-0\"\n" +
+                "                            onclick=\"document.getElementById('username').innerHTML = 'Enter username and password.';\n" +
+                "                            document.getElementById('username').style.color='black';\" data-dismiss=\"modal\">Cancel</button>\n" +
+                "                </form>\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "\n" +
+                "    </div>");
+        });
+    });
+
+    $(document).ready(function () {
+        $('#SignUpModal').on('hidden.bs.modal', function (e) {
+            $(document).css('width','100%');
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('#SignUpModal').on('hidden.bs.modal', function (e) {
+            $(this).html("<div class=\"modal-dialog\">\n" +
+                "\n" +
+                "        <!-- Modal content-->\n" +
+                "        <div class=\"modal-content\">\n" +
+                "            <div class=\"modal-header\" style=\"background-color: #337ab7; color:white; width:100.2%\">\n" +
+                "\n" +
+                "                <h4 class=\"modal-title\" id=\"registerModalHeader\">Register Now!</h4>\n" +
+                "                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" style=\"color:white\">&times;</button>\n" +
+                "            </div>\n" +
+                "            <div class=\"modal-body\" style=\"font-family:sans-serif; font-size:15px;\" id=\"modal-body\">\n" +
+                "                <form name='registration' id=\"regForm\" action=\"registration.php\" method=\"post\">\n" +
+                "                    <label for=\"userid\">Username*:</label><br>\n" +
+                "                    <input type=\"text\" name=\"userid\" size=\"12\" id=\"userid\" /><br><br>\n" +
+                "                    <label for=\"passid\">Password*:</label><br>\n" +
+                "                    <input type=\"password\" name=\"passid\" size=\"12\" id=\"passid\" /><br><br>\n" +
+                "                    <label for=\"name\">Name*:</label><br>\n" +
+                "                    <input type=\"text\" name=\"name\" size=\"50\" id=\"name\" /><br><br>\n" +
+                "                    <label for=\"address\">Address:</label><br>\n" +
+                "                    <input type=\"text\" name=\"address\" id=\"address\"/><br><br>\n" +
+                "                    <label for=\"country\">Country*:</label><br>\n" +
+                "                    <select name=\"country\" id=\"country\">\n" +
+                "                        <option selected=\"\" value=\"Default\">(Please select a country)</option>\n" +
+                "                        <option value=\"Australia\">Australia</option>\n" +
+                "                        <option value=\"Canada\">Canada</option>\n" +
+                "                        <option value=\"China\">China</option>\n" +
+                "                        <option value=\"India\">India</option>\n" +
+                "                        <option value=\"Japan\">Japan</option>\n" +
+                "                        <option value=\"Russia\">Russia</option>\n" +
+                "                        <option value=\"USA\">UK</option>\n" +
+                "                        <option value=\"USA\">USA</option>\n" +
+                "                    </select><br><br>\n" +
+                "                    <label for=\"zip\">ZIP Code*:</label><br>\n" +
+                "                    <input type=\"text\" name=\"zip\" id=\"zip\" /><br><br>\n" +
+                "                    <label for=\"email\">Email*:</label><br>\n" +
+                "                    <input type=\"text\" name=\"email\" id=\"email\"/><br><br>\n" +
+                "                    <label id=\"gender\">Role*:</label><br>\n" +
+                "                    <input type=\"radio\" name=\"role\" value=\"Freelancer\" checked/><span>Freelancer</span><br>\n" +
+                "                    <input type=\"radio\" name=\"role\" value=\"Contractor\" /><span>Contractor</span><br><br>\n" +
+                "                    <label for=\"bio\">Bio:</label><br>\n" +
+                "                    <textarea name=\"desc\" id=\"bio\" style=\"width:100%\"></textarea><br><br>\n" +
+                "                    <label for=\"resume\">Upload Resume/Business Card:</label><br>\n" +
+                "                    <input type=\"file\" id=\"resume\"/><br>\n" +
+                "\n" +
+                "                    <input type=\"button\" name=\"submit\" value=\"Submit\" class=\"btn btn-outline-success my-2 my-sm-0\" id=\"register\"\n" +
+                "                           onclick=\"registrationValidate(document.getElementById('userid').value,document.getElementById('passid').value )\" /><br>\n" +
+                "                    </form>\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "\n" +
+                "    </div>")
+        });
+    });
+
+
+
+
+    $(document).ready(function () {
+        $(document).on('scroll',()=>{
+            if($(window).scrollTop()>0)
+            {
+                $("body > nav").addClass("sticky");
+            }
+            else
+                $("body > nav").removeClass("sticky");
+        })
+    });
+
+
+
+
+    function validate(username,password){
+
+        var uid_len =username.length;
+        var pattern = /^[A-Za-z0-9]+$/;
+        var passid_len = password.length;
+
+        if (uid_len < 5 || uid_len >= 20)
+        {
+            alert("Invalid Username or Password! Enter Again");
+
+            return false;
+        }else if(!username.match(pattern)){
+            alert("Invalid Username or Password! Enter Again");
+
+            return false;
+        }
+        else if((passid_len < 8)||(passid_len >= 20))
+        {
+            alert("Invalid Username or Password! Enter Again");
+           return false;
+        }
+
+        return true;
+    }
+
+    function registrationValidate(username, password){
+
+        var uid_len =username.length;
+        var pattern = /^[A-Za-z0-9]+$/;
+        var passid_len = password.length;
+        var name=document.getElementById("name").value;
+        var email=document.getElementById("email").value;
+        var emailPattern=/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+
+        if (uid_len == 0 || uid_len < 5 || uid_len >= 20)
+        {
+            alert("Enter a valid username");
+
+            return false;
+        }else if(!username.match(pattern)){
+            alert("Enter a valid username");
+
+            return false;
+        }
+        else if((passid_len == 0)||(passid_len < 8)||(passid_len >= 20))
+        {
+            alert("Enter a valid password");
+
+            return false;
+        }else if(name.length == 0){
+            alert("Enter a valid name!");
+            return false;
+        }else if(!email.match(emailPattern) || email.length == 0){
+            alert("Enter a valid email ID!");
+            return false;
+        }else if(document.getElementById("country").value == "Default"){
+            alert("Please select a country!");
+            return false;
+        }else if(document.getElementById("zip").value.length == 0){
+            alert("Please enter a zip code!");
+            return false;
+        }else if(document.getElementById("role").value.length == 0){
+            alert("Please select a role!");
+            return false;
+        }
+
+        return true;
+    }
+</script>
