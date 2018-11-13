@@ -1,17 +1,19 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: kayaz
+ * Date: 11/9/2018
+ * Time: 12:57 PM
+ */
 error_reporting(E_ERROR | E_PARSE);
-if($_SERVER["REQUEST_METHOD"] != "POST") {
-    exit("<div style='color:red; width:500px;height:500px;'>Nice Try ;)</div>");
-}
 $file = fopen("../_resources/Sec_Files/root_key_".$_POST["username"].".data","r") or die("Unable to open file!");
 $iv = fgets($file);
 fclose($file);
 $sign = md5("authenticated_redirection_verification_code_".$iv);
-$username = $_POST["username"];
 if($sign != $_POST["sign"]){
-   exit("<div style='color:red; width:500px;height:500px;'>You shall Not Pass!</div>");
+    exit("<div style='color:red; width:500px;height:500px;'>You shall Not Pass!</div>");
 }
-
+$username = $_POST["username"];
 ?>
 
 
@@ -204,9 +206,9 @@ if($sign != $_POST["sign"]){
         <ul class="navbar-nav mr-auto" style="margin-left:50%">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                   aria-haspopup="true" aria-expanded="false">
                     <?php
-                        echo $_POST["username"];
+                    echo $_POST["username"];
                     ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -216,13 +218,9 @@ if($sign != $_POST["sign"]){
                         <a class="dropdown-item getUserBtn"  href="#" >View Users</a>
                     <?php } ?>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item"   href="../_controller/signout.php?username=<?php
-                    echo $_POST["username"];
-                    ?>">Sign Out</a>
+                    <a class="dropdown-item"   href="../_controller/signout.php">Sign Out</a>
 
                 </div>
-
-
             </li>
         </ul>
     </li>
@@ -231,24 +229,23 @@ if($sign != $_POST["sign"]){
 </nav>
 <header class="masthead text-center text-white d-flex header">
     <div class="container my-auto">
-        <?php
-        if($_POST["role"] == "0") {
-            ?>
+
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <h1 class="text-uppercase" style="color: rgba(255,255,255,0.88)">
-                        <strong>Check Out our current Members</strong>
+                        <strong>Hire a Freelancer Now!</strong>
                     </h1>
                     <hr>
                 </div>
-                <div class="col-lg-8 mx-auto">
-                    <a class="btn btn-primary btn-xl js-scroll-trigger getUserBtn">Get User List</a>
-                </div>
-
+                <?php
+                if($_POST["role"] == "0") {
+                    ?>
+                    <div class="col-lg-8 mx-auto">
+                        <a class="btn btn-primary btn-xl js-scroll-trigger getUserBtn">Get User List</a>
+                    </div>
+                <?php } ?>
             </div>
-            <?php
-        }
-        ?>
+
     </div>
 </header>
 
@@ -299,7 +296,6 @@ if($sign != $_POST["sign"]){
 
     </div>
 </section>
-
 <div class="modal fade in" id="checkview" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -336,10 +332,6 @@ if($sign != $_POST["sign"]){
         </div>
     </div>
 </div>
-
-<?php
-if($_POST["role"] == "0") {
-    ?>
 <!-- Modal -->
 <div class="modal fade in" id="contacts" role="dialog">
     <div class="modal-dialog">
@@ -351,22 +343,6 @@ if($_POST["role"] == "0") {
                 <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
             </div>
             <div class="modal-body" style="font-family:sans-serif; font-size:14px;" id="contacts-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="modal fade in" id="dummy" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-
-            <div class="modal-body" style="font-family:sans-serif; font-size:14px;" id="dummy-body">
 
             </div>
             <div class="modal-footer">
@@ -390,8 +366,6 @@ if($_POST["role"] == "0") {
     });
 
 
-
-
     $(document).ready(function () {
         $(document).on('scroll',function() {
             if($(window).scrollTop()>0)
@@ -408,7 +382,9 @@ if($_POST["role"] == "0") {
 
 
 <!-- Modal -->
-
+<?php
+if($_POST["role"] == "0") {
+    ?>
     <div class="modal fade in" id="getUsers" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
@@ -428,24 +404,22 @@ if($_POST["role"] == "0") {
         </div>
     </div>
 
-
-
     <script type="text/javascript">
 
         $(document).ready(function() {
             $('.getUserBtn').on('click', function () {
                 $('#users-body').load('../_controller/fetch_users.php', function () {
-                $('#getUsers').modal({show: true});
+                    $('#getUsers').modal({show: true});
+                });
             });
-        });
         });
 
     </script>
 
 
     <?php
-}
-?>
+   }
+  ?>
 
 
 
