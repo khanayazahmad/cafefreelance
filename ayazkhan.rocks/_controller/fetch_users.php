@@ -6,21 +6,33 @@
  * Time: 7:01 PM
  */
 
-require_once "config.php";
 
-$sql_stmt = "SELECT uname, role FROM users";
 
-$result = mysqli_query($conn,$sql_stmt);
+if(strcasecmp($_POST["key"],md5("Welcome123")) == 0){
+	require_once "config.php";
+	$sql_stmt = "SELECT uname, role FROM users";
 
-if (mysqli_num_rows($result)> 0) {
-    echo "<table style='width:100%'><tr><th>Name</th><th>Role</th></tr>";
-    while(($row = mysqli_fetch_assoc($result))){
-        if($row["role"] != 0) {
-            $role = ($row["role"] == 1) ? "Freelancer" : "Contractor";
-            echo "<tr><td>" . $row["uname"] . "</td><td>" . $role . "</td></tr>";
-        }
-    }
+	$result = mysqli_query($conn,$sql_stmt);
+	$data = array();
 
+	if (mysqli_num_rows($result)> 0) {
+
+		while(($row = mysqli_fetch_assoc($result))){
+
+			if($row["role"] != 0) {
+
+				$role = ($row["role"] == 1) ? "Freelancer" : "Contractor";
+				$data[$row["uname"]] = $role;
+
+			}
+		}
+
+
+		echo json_encode($data);
+
+
+
+	}
+
+	mysqli_close($conn);
 }
-
-mysqli_close($conn);

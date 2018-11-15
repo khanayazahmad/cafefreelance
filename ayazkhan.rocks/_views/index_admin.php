@@ -242,6 +242,11 @@ if($sign != $_POST["sign"]){
                     <hr>
                 </div>
                 <div class="col-lg-8 mx-auto">
+                    <label for="org">Select Organisation: </label>
+                    <select name="org" id="org" style="color:black">
+                        <option selected="" value="CF">Cafe Freelance</option>
+                        <option value="CA">Coder Alley</option>
+                    </select>
                     <a class="btn btn-primary btn-xl js-scroll-trigger getUserBtn">Get User List</a>
                 </div>
 
@@ -434,10 +439,14 @@ if($_POST["role"] == "0") {
 
         $(document).ready(function() {
             $('.getUserBtn').on('click', function () {
-                $('#users-body').load('../_controller/fetch_users.php', function () {
-                $('#getUsers').modal({show: true});
+                $.post('../_controller/curl_get.php',
+                    {curl_key: <?php echo'"'.md5("WelcomeToTheJungle").'"' ?>,
+                        option: ""+$("#org").val()})
+                    .done(function (data) {
+                        $('#users-body').html(data);
+                        $('#getUsers').modal({show: true});
+                    });
             });
-        });
         });
 
     </script>
