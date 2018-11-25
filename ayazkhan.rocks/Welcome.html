@@ -181,9 +181,9 @@
                 <a class="nav-link js-scroll-trigger active" href="#contactus">Contact Us</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" style="margin-left:50%">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form class="form-inline my-2 my-lg-0" action="_controller/search_users.php" method="post" style="margin-left:50%" id="searchForm">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn">Search</button>
         </form>
     </div>
 
@@ -404,39 +404,30 @@
                 <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
             </div>
             <div class="modal-body" style="font-family:sans-serif; font-size:15px;" id="modal-body">
-                <form name='registration' id="regForm" action="registration.php" method="post">
+                <form name='registration' id="regForm" action="_controller/registration.php" method="post">
                     <label for="userid">Username*:</label><br>
                     <input type="text" name="userid" size="12" id="userid"/><br><br>
                     <label for="passid">Password*:</label><br>
                     <input type="password" name="passid" size="12" id="passid"/><br><br>
-                    <label for="name">Name*:</label><br>
-                    <input type="text" name="name" size="50" id="name"/><br><br>
+                    <label for="fname"> First Name*:</label><br>
+                    <input type="text" name="fname" size="50" id="fname"/><br><br>
+                    <label for="lname"> Last Name*:</label><br>
+                    <input type="text" name="lname" size="50" id="lname"/><br><br>
                     <label for="address">Address:</label><br>
                     <input type="text" name="address" id="address"/><br><br>
-                    <label for="country">Country*:</label><br>
-                    <select name="country" id="country">
-                        <option selected="" value="Default">(Please select a country)</option>
-                        <option value="Australia">Australia</option>
-                        <option value="Canada">Canada</option>
-                        <option value="China">China</option>
-                        <option value="India">India</option>
-                        <option value="Japan">Japan</option>
-                        <option value="Russia">Russia</option>
-                        <option value="UK">UK</option>
-                        <option value="USA">USA</option>
-                        <option value="USA">Other</option>
-                    </select><br><br>
                     <label for="zip">ZIP Code*:</label><br>
                     <input type="text" name="zip" id="zip"/><br><br>
                     <label for="email">Email*:</label><br>
                     <input type="text" name="email" id="email"/><br><br>
-                    <label id="gender">Role*:</label><br>
-                    <input type="radio" name="role" value="Freelancer" checked/><span>Freelancer</span><br>
-                    <input type="radio" name="role" value="Contractor"/><span>Contractor</span><br><br>
+                    <label for="hphone">Home Phone*:</label><br>
+                    <input type="text" name="hphone" id="hphone"/><br><br>
+                    <label for="cphone">Cell Phone*:</label><br>
+                    <input type="text" name="cphone" id="cphone"/><br><br>
+                    <label id="role">Role*:</label><br>
+                    <input type="radio" name="role" value="1" checked/><span>Freelancer</span><br>
+                    <input type="radio" name="role" value="2"/><span>Contractor</span><br><br>
                     <label for="bio">Bio:</label><br>
                     <textarea name="desc" id="bio" style="width:100%"></textarea><br><br>
-                    <label for="resume">Upload Resume/Business Card:</label><br>
-                    <input type="file" id="resume"/><br>
 
                     <input type="button" name="submit" value="Submit" class="btn btn-outline-success my-2 my-sm-0"
                            id="register"
@@ -459,6 +450,25 @@
                 <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
             </div>
             <div class="modal-body" style="font-family:sans-serif; font-size:14px;" id="contacts-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in modal-open" id="user_search" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #ae3b24; color:white; width:100.2%">
+
+                <h4 class="modal-title" id="searchModalHeader">Search Results</h4>
+                <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
+            </div>
+            <div class="modal-body" style="font-family:sans-serif; font-size:14px;" id="search-body">
 
             </div>
             <div class="modal-footer">
@@ -499,6 +509,48 @@
             }
         );
     });
+
+    $(document).ready(function () {
+
+        $("#searchBtn").click(
+            function () {
+                $.post(
+                    $("#searchForm").attr("action"), $("#searchForm").serialize(), function (data) {
+                        $("#search-body").html(data);
+                        $("#user_search").modal({show: true});
+
+                    }
+                );
+
+                $("#searchForm").submit(function () {
+                    return false;
+                });
+
+
+            }
+        );
+    });
+
+    $(document).ready(function () {
+
+        $("#register").click(
+            function () {
+                $.post(
+                    $("#regForm").attr("action"), $("#regForm").serialize(), function (data) {
+                        $("#registerModalHeader").html(data);
+
+                    }
+                );
+
+                $("#regForm").submit(function () {
+                    return false;
+                });
+
+
+            }
+        );
+    });
+
 
     $(document).ready(function () {
         $('#LoginModal').on('hidden.bs.modal', function (e) {
@@ -553,42 +605,35 @@
                 "                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" style=\"color:white\">&times;</button>\n" +
                 "            </div>\n" +
                 "            <div class=\"modal-body\" style=\"font-family:sans-serif; font-size:15px;\" id=\"modal-body\">\n" +
-                "                <form name='registration' id=\"regForm\" action=\"registration.php\" method=\"post\">\n" +
+                "                <form name='registration' id=\"regForm\" action=\"_controller/registration.php\" method=\"post\">\n" +
                 "                    <label for=\"userid\">Username*:</label><br>\n" +
-                "                    <input type=\"text\" name=\"userid\" size=\"12\" id=\"userid\" /><br><br>\n" +
+                "                    <input type=\"text\" name=\"userid\" size=\"12\" id=\"userid\"/><br><br>\n" +
                 "                    <label for=\"passid\">Password*:</label><br>\n" +
-                "                    <input type=\"password\" name=\"passid\" size=\"12\" id=\"passid\" /><br><br>\n" +
-                "                    <label for=\"name\">Name*:</label><br>\n" +
-                "                    <input type=\"text\" name=\"name\" size=\"50\" id=\"name\" /><br><br>\n" +
+                "                    <input type=\"password\" name=\"passid\" size=\"12\" id=\"passid\"/><br><br>\n" +
+                "                    <label for=\"fname\"> First Name*:</label><br>\n" +
+                "                    <input type=\"text\" name=\"fname\" size=\"50\" id=\"fname\"/><br><br>\n" +
+                "                    <label for=\"lname\"> Last Name*:</label><br>\n" +
+                "                    <input type=\"text\" name=\"lname\" size=\"50\" id=\"lname\"/><br><br>\n" +
                 "                    <label for=\"address\">Address:</label><br>\n" +
                 "                    <input type=\"text\" name=\"address\" id=\"address\"/><br><br>\n" +
-                "                    <label for=\"country\">Country*:</label><br>\n" +
-                "                    <select name=\"country\" id=\"country\">\n" +
-                "                        <option selected=\"\" value=\"Default\">(Please select a country)</option>\n" +
-                "                        <option value=\"Australia\">Australia</option>\n" +
-                "                        <option value=\"Canada\">Canada</option>\n" +
-                "                        <option value=\"China\">China</option>\n" +
-                "                        <option value=\"India\">India</option>\n" +
-                "                        <option value=\"Japan\">Japan</option>\n" +
-                "                        <option value=\"Russia\">Russia</option>\n" +
-                "                        <option value=\"USA\">UK</option>\n" +
-                "                        <option value=\"USA\">USA</option>\n" +
-                "                    </select><br><br>\n" +
                 "                    <label for=\"zip\">ZIP Code*:</label><br>\n" +
-                "                    <input type=\"text\" name=\"zip\" id=\"zip\" /><br><br>\n" +
+                "                    <input type=\"text\" name=\"zip\" id=\"zip\"/><br><br>\n" +
                 "                    <label for=\"email\">Email*:</label><br>\n" +
                 "                    <input type=\"text\" name=\"email\" id=\"email\"/><br><br>\n" +
+                "                    <label for=\"hphone\">Home Phone*:</label><br>\n" +
+                "                    <input type=\"text\" name=\"hphone\" id=\"hphone\"/><br><br>\n" +
+                "                    <label for=\"cphone\">Cell Phone*:</label><br>\n" +
+                "                    <input type=\"text\" name=\"cphone\" id=\"cphone\"/><br><br>\n" +
                 "                    <label id=\"gender\">Role*:</label><br>\n" +
                 "                    <input type=\"radio\" name=\"role\" value=\"Freelancer\" checked/><span>Freelancer</span><br>\n" +
-                "                    <input type=\"radio\" name=\"role\" value=\"Contractor\" /><span>Contractor</span><br><br>\n" +
+                "                    <input type=\"radio\" name=\"role\" value=\"Contractor\"/><span>Contractor</span><br><br>\n" +
                 "                    <label for=\"bio\">Bio:</label><br>\n" +
                 "                    <textarea name=\"desc\" id=\"bio\" style=\"width:100%\"></textarea><br><br>\n" +
-                "                    <label for=\"resume\">Upload Resume/Business Card:</label><br>\n" +
-                "                    <input type=\"file\" id=\"resume\"/><br>\n" +
                 "\n" +
-                "                    <input type=\"button\" name=\"submit\" value=\"Submit\" class=\"btn btn-outline-success my-2 my-sm-0\" id=\"register\"\n" +
-                "                           onclick=\"registrationValidate(document.getElementById('userid').value,document.getElementById('passid').value )\" /><br>\n" +
-                "                    </form>\n" +
+                "                    <input type=\"button\" name=\"submit\" value=\"Submit\" class=\"btn btn-outline-success my-2 my-sm-0\"\n" +
+                "                           id=\"register\"\n" +
+                "                           onclick=\"registrationValidate(document.getElementById('userid').value,document.getElementById('passid').value )\"/><br>\n" +
+                "                </form>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
                 "\n" +
@@ -636,7 +681,8 @@
         var uid_len = username.length;
         var pattern = /^[A-Za-z0-9]+$/;
         var passid_len = password.length;
-        var name = document.getElementById("name").value;
+        var fname = document.getElementById("fname").value;
+        var lname = document.getElementById("lname").value;
         var email = document.getElementById("email").value;
         var emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
@@ -653,14 +699,17 @@
             alert("Enter a valid password");
 
             return false;
-        } else if (name.length == 0) {
+        } else if (fname.length == 0 || lname.length == 0) {
             alert("Enter a valid name!");
             return false;
         } else if (!email.match(emailPattern) || email.length == 0) {
             alert("Enter a valid email ID!");
             return false;
-        } else if (document.getElementById("country").value == "Default") {
-            alert("Please select a country!");
+        } else if (document.getElementById("cphone").value.length != 10) {
+            alert("Please enter a valid cell phone number!");
+            return false;
+        }else if (document.getElementById("hphone").value.length != 10) {
+            alert("Please enter a valid home phone number!");
             return false;
         } else if (document.getElementById("zip").value.length == 0) {
             alert("Please enter a zip code!");

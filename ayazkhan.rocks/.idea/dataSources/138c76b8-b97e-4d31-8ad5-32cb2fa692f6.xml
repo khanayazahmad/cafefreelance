@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@localhost">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.11">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.14">
     <root id="1">
       <ServerVersion>5.7.23</ServerVersion>
       <DefaultEngine>MyISAM</DefaultEngine>
@@ -924,13 +924,43 @@
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="232" parent="229" name="role">
+    <column id="232" parent="229" name="fname">
       <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="233" parent="229" name="lname">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="234" parent="229" name="address">
+      <Position>5</Position>
+      <DataType>varchar(512)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="235" parent="229" name="email">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="236" parent="229" name="hphone">
+      <Position>7</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="237" parent="229" name="cphone">
+      <Position>8</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="238" parent="229" name="role">
+      <Position>9</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="233" parent="229" name="PRIMARY">
+    <key id="239" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>uname</ColNames>
       <Primary>1</Primary>

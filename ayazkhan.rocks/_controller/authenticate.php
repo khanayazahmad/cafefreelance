@@ -12,7 +12,7 @@ error_reporting(E_ERROR | E_PARSE);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once "config.php";
     $username = trim($_POST["username"]);
-    $password = trim($_POST["password"]);
+    $password = md5(trim($_POST["password"]));
 
     $sql_stmt = "SELECT uname, passw, role FROM users WHERE uname = '$username'";
 

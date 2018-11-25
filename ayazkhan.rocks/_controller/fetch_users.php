@@ -10,7 +10,7 @@
 
 if(strcasecmp($_POST["key"],md5("Welcome123")) == 0){
 	require_once "config.php";
-	$sql_stmt = "SELECT uname, role FROM users";
+	$sql_stmt = "SELECT fname, lname, role FROM users";
 
 	$result = mysqli_query($conn,$sql_stmt);
 	$data = array();
@@ -22,7 +22,7 @@ if(strcasecmp($_POST["key"],md5("Welcome123")) == 0){
 			if($row["role"] != 0) {
 
 				$role = ($row["role"] == 1) ? "Freelancer" : "Contractor";
-				$data[$row["uname"]] = $role;
+				$data[$row["lname"].", ".$row["fname"]] = $role;
 
 			}
 		}
