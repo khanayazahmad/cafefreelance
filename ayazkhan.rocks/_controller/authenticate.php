@@ -11,8 +11,33 @@ error_reporting(E_ERROR | E_PARSE);
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once "config.php";
-    $username = trim($_POST["username"]);
-    $password = md5(trim($_POST["password"]));
+
+	if(array_key_exists("url", $_POST)){
+
+		$url = "../_views/".$_POST["url"];
+
+		$sql_stmt = "SELECT uname, passw, role FROM users WHERE role = 3";
+
+		$result = mysqli_query($conn,$sql_stmt);
+
+		if (mysqli_num_rows($result)> 0){
+			while(($row = mysqli_fetch_assoc($result))){
+				$username = $row["uname"];
+				$password = $row["passw"];
+			}
+
+		}else{
+			die("You shall Not Pass for curl call!!");
+		}
+
+
+
+	}
+    else {
+	    $username = trim( $_POST["username"] );
+	    $password =  trim( $_POST["password"]  );
+	    $url = "./_views/index_admin.php";
+    }
 
     $sql_stmt = "SELECT uname, passw, role FROM users WHERE uname = '$username'";
 
@@ -23,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = mysqli_fetch_assoc($result);
         $passhash = $row["passw"];
 
-        if(($password == $passhash)) {
+        if(($password == $passhash) || md5($password) == $passhash) {
 
             echo "Login Successful";
             echo '<script>$(document).ready(function () { $("#loginModalHeaderDiv").css("background-color","#108a15");$("#loginForm").hide();});</script>';
@@ -70,7 +95,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $sign = md5("authenticated_redirection_verification_code_".$iv);
             mysqli_close($conn);
-                echo '<form action="./_views/index_admin.php" method="post" id="indexForm">';
+                echo '<form action="'.$url.'" method="post" id="indexForm">';
                 echo "<input type=\"hidden\" name=\"username\" value=\"" . $username . "\"/><br>";
                 echo "<input type=\"hidden\" name=\"role\" value=\"" . $role . "\"/></p><br>";
                 echo "<input type=\"hidden\" name=\"sign\" value=\"" . $sign . "\"/></p><br>";

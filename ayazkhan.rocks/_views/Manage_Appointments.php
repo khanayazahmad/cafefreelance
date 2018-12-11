@@ -6,13 +6,23 @@
  * Time: 12:57 PM
  */
 error_reporting(E_ERROR | E_PARSE);
-$file = fopen("../_resources/Sec_Files/root_key_".$_POST["username"].".data","r") or die("Unable to open file!");
-$iv = fgets($file);
+$file = fopen("../_resources/Sec_Files/root_key_".$_POST["username"].".data","r");
+if($file !== false)
+	$iv = fgets($file);
+else
+	$iv = "";
 fclose($file);
 $sign = md5("authenticated_redirection_verification_code_".$iv);
 if($sign != $_POST["sign"]){
-    exit("<div style='color:red; width:500px;height:500px;'>You shall Not Pass!</div>");
+	$url="Manage_Appointments.php";
+	echo '<form action="../_controller/authenticate.php" method="post" id="indexForm">';
+	echo "<input type=\"hidden\" name=\"url\" value=\"" . $url . "\"/></p><br>";
+	echo "<script>document.getElementById('indexForm').submit();</script>";
+
 }
+$ch = curl_init("http://52.53.236.7/service/updateStats/16");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_exec($ch);
 $username = $_POST["username"];
 ?>
 

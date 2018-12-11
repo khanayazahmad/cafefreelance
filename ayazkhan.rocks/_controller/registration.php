@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	require_once "config.php";
 
 	$userid = $_POST['userid'];
-	$password = md5($_POST['passid']);
+	$password = ($_POST['passid']);
 	$fname = $_POST['fname'];
 	$lname = $_POST['lname'];
 	$address = $_POST['address'];
